@@ -26,6 +26,9 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [numOfPage, setNumOfPage] = useState(1);
 
+  const [regularUrl, setRegularUrl] = useState("");
+  const [altDescription, setAltDescription] = useState("");
+
   useEffect(() => {
     if (searchQuery.trim() === "") return;
 
@@ -58,9 +61,6 @@ export default function App() {
     setNumOfPage(numOfPage + 1);
   };
 
-  const [regularUrl, setRegularUrl] = useState("");
-  const [altDescription, setAltDescription] = useState("");
-
   function openModal(regular, alt_description) {
     setIsOpen(true);
     setRegularUrl(regular);
@@ -74,13 +74,23 @@ export default function App() {
   return (
     <div className={styles.container}>
       <SearchBar onSubmit={handleSearchQuery} />
-      {error && <ErrorMessage />}
+      {error && (
+        <div className={styles.itemCenter}>
+          <ErrorMessage />
+        </div>
+      )}
       {images.length > 0 && (
         <ImageGallery images={images} openModal={openModal} />
       )}
-      {loading && <DNA />}
-      {images.length > 0 && !loading && (
-        <LoadMoreBtn onHandleLoadMore={handleLoadMore} />
+      {loading && (
+        <div className={styles.itemCenter}>
+          <DNA />
+        </div>
+      )}
+      {images.length > 0 && !loading && numOfPage < totalPages && (
+        <div className={styles.itemCenter}>
+          <LoadMoreBtn onHandleLoadMore={handleLoadMore} />
+        </div>
       )}
 
       <ImageModal

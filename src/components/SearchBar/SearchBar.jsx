@@ -20,7 +20,7 @@ export default function SearchBar({ onSubmit }) {
     if (inputValue.trim() === "") {
       notifyError();
     } else {
-      notifySuccess();
+      // notifySuccess();
       onSubmit(inputValue);
       setInputValue("");
     }
