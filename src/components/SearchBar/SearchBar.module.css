@@ -1,0 +1,40 @@
+.header {
+  background-color: navy;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
+.form {
+  position: relative;
+}
+
+.input {
+  width: 320px;
+  height: 40px;
+
+  padding: 8px 36px 8px;
+}
+
+.btn {
+  padding: 10px;
+
+  border: none;
+  background-color: transparent;
+
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.btn:hover,
+.btn:focus,
+.btn:focus-visible {
+  outline: none;
+}

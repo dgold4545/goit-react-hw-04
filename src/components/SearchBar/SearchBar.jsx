@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./SearchBar.module.css";
 import toast, { Toaster } from "react-hot-toast";
+import { IoIosSearch } from "react-icons/io";
 
 const notifyError = () =>
   toast.error("Query can not be empty sting, please enrer the search term");
@@ -26,9 +27,10 @@ export default function SearchBar({ onSubmit }) {
   };
 
   return (
-    <header>
-      <form onSubmit={handeSubmit}>
+    <header className={styles.header}>
+      <form className={styles.form} onSubmit={handeSubmit}>
         <input
+          className={styles.input}
           value={inputValue}
           onChange={(event) => handleChange(event.target.value)}
           type="text"
@@ -36,8 +38,10 @@ export default function SearchBar({ onSubmit }) {
           autoFocus
           placeholder="Search images and photos"
         />
-        <button type="submit">Search</button>
-        <Toaster />
+        <button className={styles.btn} type="submit">
+          <IoIosSearch />
+        </button>
+        <Toaster position="top-right" />
       </form>
     </header>
   );
